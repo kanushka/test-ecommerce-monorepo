@@ -1,0 +1,8 @@
+apiVersion: core.choreo.dev/v1beta1
+kind: ComponentConfig
+spec:
+  inbound:
+    - name: InventoryManagement
+      port: 7003
+      type: REST
+      networkVisibility: Public

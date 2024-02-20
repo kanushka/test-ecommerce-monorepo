@@ -1,0 +1,8 @@
+apiVersion: core.choreo.dev/v1beta1
+kind: ComponentConfig
+spec:
+  inbound:
+    - name: ProductCatalog
+      port: 7001
+      type: REST
+      networkVisibility: Public
