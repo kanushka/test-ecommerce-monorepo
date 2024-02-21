@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: Product Catalog Service
+  description: API for managing the e-commerce product catalog 
+  version: 1.0.0 
+# servers:
+#   - url: http://localhost:3000/api/v1
+paths:
+  /health:
+    get:
+      summary: Product Catalog Health Check
+      description: Returns the health status of the product catalog service
+      responses:
+        '200':
+          description: Service is operational
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+  /catalog:
+    get:
+      summary: Retrieve Product Catalog
+      description: Returns the entire product catalog
+      responses:
+        '200':
+          description: Successful retrieval of product catalog
+          content:
+            application/json:
+              schema:
+                type: array
+                items: # Define your product schema below
+                  $ref: '#/components/schemas/Product' 
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        price:
+          type: number
+          format: float
