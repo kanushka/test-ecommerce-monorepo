@@ -1,0 +1,7 @@
+version: 0.1
+
+endpoints:
+- name: CRM
+  port: 7021
+  type: REST
+  networkVisibility: Public
