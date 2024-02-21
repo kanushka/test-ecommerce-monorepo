@@ -1,4 +1,7 @@
 const express = require('express');
+const os = require("os");
+
+const app = express();
 const router = express.Router();
 
 // Sample product data
@@ -22,4 +25,25 @@ router.get('/catalog', (req, res) => {
     res.status(200).json(products);
 });
 
-module.exports = router;
+// Run the server
+const PORT = process.env.PORT || 7001;
+
+function getLocalIpAddress() {
+    const interfaces = os.networkInterfaces();
+    for (const devName in interfaces) {
+        const iface = interfaces[devName];
+
+        for (let i = 0; i < iface.length; i++) {
+            const alias = iface[i];
+            if (alias.family === "IPv4" && !alias.internal) {
+                return alias.address;
+            }
+        }
+    }
+    return "localhost";
+}
+
+app.listen(PORT, () => {
+    const ip = getLocalIpAddress();
+    console.log(`Product Catalog API is running at http://${ip}:${PORT}`);
+});
