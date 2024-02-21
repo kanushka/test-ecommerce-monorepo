@@ -1,0 +1,7 @@
+version: 0.1
+
+endpoints:
+- name: RecommendationsEngine
+  port: 7022
+  type: REST
+  networkVisibility: Public
