@@ -1,8 +1,10 @@
 import ballerina/http;
 
-service / on new http:Listener(0) {
+configurable int PORT = 7021;
+
+service / on new http:Listener(PORT) {
     resource function get health() returns json {
-        return {status: http:OK.toString(), body: "CRM is up and running\n"};
+        return {status: http:OK.toString(), body: "CRM is up and running on " + PORT.toString()};
     }
 }
 
