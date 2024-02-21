@@ -12,7 +12,7 @@ service / on new http:Listener(PORT) {
         return {message: "CRM is up and running on " + PORT.toString()};
     }
 
-    resource function get crm/recommonds() returns json {
+    resource function get recommonds() returns json {
 
         http:Client|http:ClientError httpEp = new (url = REC_URL, config = {
             auth: {
