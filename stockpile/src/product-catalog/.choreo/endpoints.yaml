@@ -1,0 +1,8 @@
+version: 0.1
+
+endpoints:
+- name: ProductCatalog
+  port: 7001
+  type: REST
+  networkVisibility: Public
+  schemaFilePath: openapi.yaml
