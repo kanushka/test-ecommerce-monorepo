@@ -1,0 +1,7 @@
+version: 0.1
+
+endpoints:
+- name: OrderProcessing
+  port: 7013
+  type: REST
+  networkVisibility: Public

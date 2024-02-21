@@ -1,0 +1,8 @@
+apiVersion: core.choreo.dev/v1beta1
+kind: ComponentConfig
+spec:
+  inbound:
+    - name: OrderProcessing
+      port: 7013
+      type: REST
+      networkVisibility: Public
