@@ -12,17 +12,36 @@ service / on new http:Listener(PORT) {
         return {message: "CRM is up and running on " + PORT.toString()};
     }
 
-    resource function get crm/recommonds() returns json|http:ClientError {
+    resource function get crm/recommonds() returns json {
 
-        http:Client httpEp = check new (url = REC_URL, config = {
+        http:Client|http:ClientError httpEp = new (url = REC_URL, config = {
             auth: {
                 tokenUrl: TOKEN_URL,
                 clientId: CLIENT_ID,
                 clientSecret: CLIENT_SECRET
             }
         });
-        json response = check httpEp->get("/recommend");
-        return {response: response.toJsonString()};
+
+        if (httpEp is http:Client) {
+            json|http:ClientError response = httpEp->get("/recommend");
+            if (response is json) {
+                return {response: response.toJsonString()};
+            } else {
+                return {'error: true, message: "Error while calling /recommend endpoint in the http client"};
+            }
+
+        } else {
+            return {
+                'error: true,
+                message: "Error while creating the http client",
+                data: {
+                    url: REC_URL,
+                    tokenUrl: TOKEN_URL,
+                    clientId: CLIENT_ID,
+                    clientSecret: CLIENT_SECRET
+                }
+            };
+        }
     }
 }
 
