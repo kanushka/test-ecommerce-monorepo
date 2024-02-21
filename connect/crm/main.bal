@@ -8,7 +8,7 @@ configurable string CLIENT_SECRET = "";
 
 service / on new http:Listener(PORT) {
     resource function get health() returns json {
-        return {message: "CRM is up and running on " + PORT.toString()};
+        return {message: "CRM v0.5 is up and running on " + PORT.toString()};
     }
 
     resource function get envs() returns json {
