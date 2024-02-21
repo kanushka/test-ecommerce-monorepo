@@ -2,10 +2,10 @@ import ballerina/http;
 
 configurable int PORT = 7021;
 
-configurable string REC_URL = "https://api.recomendations.com";
-configurable string TOKEN_URL = "https://api.recomendations.com/token";
-configurable string CLIENT_ID = "client_id";
-configurable string CLIENT_SECRET = "client_secret";
+configurable string REC_URL = "";
+configurable string TOKEN_URL = "";
+configurable string CLIENT_ID = "";
+configurable string CLIENT_SECRET = "";
 
 service / on new http:Listener(PORT) {
     resource function get health() returns json {
