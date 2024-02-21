@@ -1,0 +1,7 @@
+version: 0.1
+
+endpoints:
+- name: PricingPromotions
+  port: 7002
+  type: REST
+  networkVisibility: Public
